@@ -1,0 +1,26 @@
+﻿@page "/phones"
+
+<h3>Phones</h3>
+
+<button @onclick="@(_ => Start())">Go</button>
+
+<div style="background-color: black; color: white; width: 100%">
+    <table>
+        @{
+            foreach (var entry in _log)
+            {
+                <tr @key=entry>
+                    <td>@entry.Id</td>
+                    <td></td>
+                    <td>@entry.Timestamp.ToFileTime()</td>
+                    <td></td>
+                    <td>@entry.Entry</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+
+@code {
+
+}
