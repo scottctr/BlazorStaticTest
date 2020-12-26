@@ -1,11 +1,15 @@
-﻿using System;
-
-namespace SwitchBoard
+﻿namespace SwitchBoard
 {
     public enum PhoneState
     {
-        OffHook,
         OnHook,
+        InRinging,
+        OffHook,
+        ReadyToDial,
+        Dialing,
+        GettingCallerStatus,
+        OutRinging,
+        Busy,
         Connected,
         OnHold,
         Recording,

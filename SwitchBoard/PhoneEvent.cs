@@ -2,10 +2,15 @@
 {
     public enum PhoneEvent
     {
+        IncomingCall,
+        Answer,
         PickUp,
+        Dialing,
+        DialingDone,
         HangUp,
-        Connected,
-        Disconnected,
+        CallerBusy,
+        Ringing,
+        CallerPickedUp,
         PutOnHold,
         RemoveHold,
         StartRecording,
@@ -13,6 +18,5 @@
         RemoveFromService,
         ReturnToService,
         LineDisruption
-        //??? Mute
     }
 }

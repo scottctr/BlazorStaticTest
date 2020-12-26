@@ -1,10 +1,35 @@
 ﻿@page "/phones"
+@using Excubo.Blazor.Diagrams
+@using SwitchBoard
 
 <h3>Phones</h3>
 
 <button @onclick="@(_ => Start())">Go</button>
 
-<div style="background-color: black; color: white; width: 100%">
+<div style="height: 1000px; width: 1000px;">
+    <Diagram>
+        <Nodes>
+            @foreach (var node in nodes)
+            {
+                <Node Fill="green" @key="@node.Phone.Name" Id="@node.Phone.Name" X="node.X" 
+                      XChanged="(x) => { node.X = x; no_implicit_render = false; }" 
+                      Y="node.Y" 
+                      YChanged="(y) => { node.Y = y; no_implicit_render = false; }"
+                      >
+                    <div style="min-width:4em; min-height:1em">@node.Phone.Name</div>
+                    <div><span>@node.Phone.PrevState</span>-><span>@node.Phone.LastEvent</span></div>
+                    <div>@node.Phone.State</div>
+                </Node>
+            }
+        </Nodes>
+        <Links>
+            @*<Link Source="@(("abc", Position.BottomRight))" Target="@(("dea", Position.TopLeft))" />*@
+        </Links>
+        <AutoLayoutSettings @ref="auto_layout" Algorithm="Algorithm.FastIncremental" />
+    </Diagram>
+</div>
+
+<div id="table" style="background-color: black; color: white; width: 100%">
     <table>
         @{
             foreach (var entry in _log)
